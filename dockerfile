@@ -1,6 +1,15 @@
+FROM node:18
+
 WORKDIR /app
-COPY app/package*.json ./
+
+# Copy package files
+COPY package*.json ./
+
+# Install dependencies
 RUN npm install
-COPY app/. .
+
+# Copy all source code
+COPY . .
+
 EXPOSE 5000
 CMD ["npm", "start"]
